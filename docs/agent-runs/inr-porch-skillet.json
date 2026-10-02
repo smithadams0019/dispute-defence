@@ -1,0 +1,231 @@
+{
+ "fixture": "inr-porch-skillet",
+ "wall_ms": 96337,
+ "state": "ESCALATED",
+ "score": 30,
+ "band": "weak",
+ "route": {
+  "action": "human_review",
+  "why": "Package was delivered to wrong address (1402 Linden Ave instead of buyer's confirmed 1420 Linden Ave). Carrier also released without required signature. Buyer legitimately did not receive the item. Evidence score 30/100, below filing threshold.",
+  "decided_by": "agent"
+ },
+ "agent": {
+  "turns": 5,
+  "tool_calls": 10,
+  "max_turns": 9,
+  "fetched": [
+   "order",
+   "delivery_scan",
+   "signature",
+   "exception",
+   "address",
+   "sku_match",
+   "buyer_comms"
+  ]
+ },
+ "draft": {
+  "notes": "",
+  "cited": [],
+  "weaknesses": [],
+  "recommended_action": "accept",
+  "recommendation_reason": "Package was delivered to wrong address (1402 Linden Ave instead of buyer's confirmed 1420 Linden Ave). Carrier also released without required signature. Buyer legitimately did not receive the item. Evidence score 30/100, below filing threshold.",
+  "generator": "bedrock",
+  "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+ },
+ "trace": [
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "receive",
+   "label": "Dispute PP-D-48213 received",
+   "detail": "Item not received, $229.00, response due 2026-10-02T05:24:54.623Z",
+   "kind": "rule"
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "Turn 1: I'll investigate this dispute systematically. Let me start by gathering the key information.",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 20325,
+   "tokens": {
+    "inputTokens": 2058,
+    "outputTokens": 73,
+    "totalTokens": 2131,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_dispute()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 20325,
+   "turn": 1
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_requirements()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 20325,
+   "turn": 1
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "Turn 2: Now let me classify the dispute and gather the necessary evidence:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 7052,
+   "tokens": {
+    "inputTokens": 2433,
+    "outputTokens": 232,
+    "totalTokens": 2665,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "classify_dispute(…)",
+   "detail": "never_arrived",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 7052,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_order()",
+   "detail": "1 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 7052,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_transaction()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 7052,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_delivery_evidence()",
+   "detail": "5 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 7052,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "Turn 3: This is concerning - the package was delivered to the wrong address (1402 instead of 1420). Let me gather more information:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 19405,
+   "tokens": {
+    "inputTokens": 3476,
+    "outputTokens": 86,
+    "totalTokens": 3562,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_communications()",
+   "detail": "1 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 19405,
+   "turn": 3
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "get_payment_records()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 19405,
+   "turn": 3
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "Turn 4: Now let me assess the evidence:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 39210,
+   "tokens": {
+    "inputTokens": 3809,
+    "outputTokens": 44,
+    "totalTokens": 3853,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "assess_evidence()",
+   "detail": "score 30 (weak)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 39210,
+   "turn": 4
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "Turn 5: The evidence is weak (score 30/100, below the 45 filing threshold). The critical issue is that the package was delivered to **1402 Linden Ave** instead of the buyer's confirmed address at **1420 Linden Ave**. This is a d",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 10336,
+   "tokens": {
+    "inputTokens": 4002,
+    "outputTokens": 264,
+    "totalTokens": 4266,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "agent",
+   "label": "escalate_to_human(…)",
+   "detail": "escalating (accept): Package was delivered to wrong address (1402 Linden Ave instead of buyer's confirmed 1420 Linden Ave). Carrier also released without required signature. Buyer legitimately did not receive the item. Evidence score 30/100, below filing threshold.",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 10336,
+   "turn": 5
+  },
+  {
+   "t": "2026-10-02T01:44:54.623Z",
+   "step": "route",
+   "label": "Agent chose to escalate",
+   "detail": "Package was delivered to wrong address (1402 Linden Ave instead of buyer's confirmed 1420 Linden Ave). Carrier also released without required signature. Buyer legitimately did not receive the item. Evidence score 30/100, below filing threshold.",
+   "kind": "llm"
+  }
+ ]
+}

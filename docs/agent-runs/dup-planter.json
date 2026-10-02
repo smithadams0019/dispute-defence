@@ -1,0 +1,233 @@
+{
+ "fixture": "dup-planter",
+ "wall_ms": 80953,
+ "state": "ESCALATED",
+ "score": 0,
+ "band": "weak",
+ "route": {
+  "action": "human_review",
+  "why": "This is a genuine duplicate charge. Two orders (HH-20402 and HH-20403) were created 3 minutes apart due to a checkout timeout retry, but only one planter was shipped. The buyer was correctly charged twice but received only one item. The buyer contacted us on 2026-09-30 requesting a refund.",
+  "decided_by": "agent"
+ },
+ "agent": {
+  "turns": 5,
+  "tool_calls": 10,
+  "max_turns": 9,
+  "fetched": [
+   "order",
+   "shipment_count",
+   "distinct_orders",
+   "delivery_scan",
+   "signature",
+   "exception",
+   "address",
+   "sku_match",
+   "buyer_comms"
+  ]
+ },
+ "draft": {
+  "notes": "",
+  "cited": [],
+  "weaknesses": [],
+  "recommended_action": "accept",
+  "recommendation_reason": "This is a genuine duplicate charge. Two orders (HH-20402 and HH-20403) were created 3 minutes apart due to a checkout timeout retry, but only one planter was shipped. The buyer was correctly charged twice but received only one item. The buyer contacted us on 2026-09-30 requesting a refund.",
+  "generator": "bedrock",
+  "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+ },
+ "trace": [
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "receive",
+   "label": "Dispute PP-D-48219 received",
+   "detail": "Duplicate transaction, $48.00, response due 2026-10-04T23:44:54.621Z",
+   "kind": "rule"
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "Turn 1: I'll investigate this duplicate transaction dispute systematically. Let me start by gathering the essential information.",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 3693,
+   "tokens": {
+    "inputTokens": 2058,
+    "outputTokens": 75,
+    "totalTokens": 2133,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_dispute()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 3693,
+   "turn": 1
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_requirements()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 3693,
+   "turn": 1
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "Turn 2: Now let me classify the dispute and gather the transaction and order details:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 29551,
+   "tokens": {
+    "inputTokens": 2368,
+    "outputTokens": 211,
+    "totalTokens": 2579,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "classify_dispute(…)",
+   "detail": "double_charged",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 29551,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_transaction()",
+   "detail": "ok item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 29551,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_order()",
+   "detail": "1 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 29551,
+   "turn": 2
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "Turn 3: Now let me check payment records to see if there are multiple charges and get delivery evidence:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 9348,
+   "tokens": {
+    "inputTokens": 2853,
+    "outputTokens": 97,
+    "totalTokens": 2950,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_payment_records()",
+   "detail": "2 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 9348,
+   "turn": 3
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_delivery_evidence()",
+   "detail": "5 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 9348,
+   "turn": 3
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "get_communications()",
+   "detail": "1 item(s)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 9348,
+   "turn": 3
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "Turn 4: This is clear: the buyer was genuinely double-charged due to a checkout retry after a timeout. Two orders were created but only one item was shipped. Let me assess the evidence:",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 23127,
+   "tokens": {
+    "inputTokens": 3835,
+    "outputTokens": 75,
+    "totalTokens": 3910,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "assess_evidence()",
+   "detail": "score 0 (weak)",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 23127,
+   "turn": 4
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "Turn 5: The evidence is conclusive: this is a genuine duplicate charge. The buyer was charged twice ($48.00 each time) for the same planter due to a checkout retry after a timeout, but only one item was shipped. The buyer contac",
+   "detail": "",
+   "kind": "llm",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 15225,
+   "tokens": {
+    "inputTokens": 3999,
+    "outputTokens": 287,
+    "totalTokens": 4286,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+   }
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "agent",
+   "label": "escalate_to_human(…)",
+   "detail": "escalating (accept): This is a genuine duplicate charge. Two orders (HH-20402 and HH-20403) were created 3 minutes apart due to a checkout timeout retry, but only one planter was shipped. The buyer was correctly charged twice but received only one item. The buyer contacted us on 2026-09-30 requesting a refund.",
+   "kind": "tool",
+   "model": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+   "ms": 15225,
+   "turn": 5
+  },
+  {
+   "t": "2026-10-02T01:44:54.621Z",
+   "step": "route",
+   "label": "Agent chose to escalate",
+   "detail": "This is a genuine duplicate charge. Two orders (HH-20402 and HH-20403) were created 3 minutes apart due to a checkout timeout retry, but only one planter was shipped. The buyer was correctly charged twice but received only one item. The buyer contacted us on 2026-09-30 requesting a refund.",
+   "kind": "llm"
+  }
+ ]
+}

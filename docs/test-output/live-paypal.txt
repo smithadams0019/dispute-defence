@@ -1,0 +1,20 @@
+  scopes: disputes/read-buyer, disputes/update-seller, disputes/read-seller, disputes/create, documents/disputes/download
+✔ OAuth token carries the seller dispute scopes (1861.813036ms)
+  live schema version: 1.12 | paths: 14 | saved snapshot version: 1.12
+✔ LIVE schema (fetched now) still matches the enums this build validates against (2321.664043ms)
+  sandbox disputes visible to this app: 0
+✔ list disputes: HTTP 200 and a well-formed (possibly empty) page (890.281772ms)
+   PayPal GET /v1/customer/disputes/DD-NOT-A-REAL-DISPUTE -> HTTP 404 RESOURCE_NOT_FOUND The specified resource does not exist. | debug_id f871153aaa26f
+✔ read one dispute: a missing id is a clean 404 RESOURCE_NOT_FOUND (route + auth are real) (945.431859ms)
+  webhook 19J57785GN615300R -> https://isknjuxnxkehdslkwgwmlzk2vm0jdmeu.lambda-url.us-east-1.on.aws/api/webhooks/paypal CUSTOMER.DISPUTE.CREATED, CUSTOMER.DISPUTE.RESOLVED, CUSTOMER.DISPUTE.UPDATED
+✔ webhook is registered with PayPal for the three dispute events (1942.377655ms)
+  result: {"ok":false,"reason":"PayPal verification_status FAILURE","via":"paypal-api"}
+✔ PayPal ITSELF rejects a forged webhook: verify-webhook-signature returns FAILURE (1061.529755ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9121.407409

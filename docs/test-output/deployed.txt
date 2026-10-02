@@ -1,0 +1,29 @@
+   https://isknjuxnxkehdslkwgwmlzk2vm0jdmeu.lambda-url.us-east-1.on.aws 200 {"ok":true,"service":"dispute-defence","now":"2026-10-02T02:29:03.566Z","model":"us.anthropic.claude-sonnet-4-5-20250929-v1:0","store":"dynamodb"}
+✔ Function URL /api/health responds (1970.491328ms)
+   https://d3ole4luf0zv98.cloudfront.net 200 text/html; charset=utf-8 998 bytes
+✔ CloudFront serves the single-page app HTML (1568.133662ms)
+✔ CloudFront routes /api/* to the Lambda (same origin, X-Session forwarded) (2821.66391ms)
+   {"api":"https://api-m.sandbox.paypal.com","mode":"sandbox","oauth":"ok","dispute_scopes":["disputes/read-buyer","disputes/update-seller","disputes/read-seller","disputes/create","documents/disputes/download"],"list_status":"HTTP 200","sandbox_disputes":0,"schema":{"version":"1.12","operations":15,"source":"https://developer.paypal.com/api/customer-disputes/v1/schema.json"}}
+✔ PayPal sandbox status through the deployed Lambda: oauth ok, seller scopes present (1250.091788ms)
+✔ missing or malformed session header is rejected (2443.592477ms)
+✔ two visitors do not see each other's changes (DynamoDB isolation) (4492.333704ms)
+✔ state persists across requests (a reload finds the same board) (3584.065083ms)
+  acted: ["FX-D-48213 file_best_effort","FX-D-48219 nudge_human","FX-D-48219 file_best_effort"]
+✔ guard replay through the deployed stack: 4-day jump, guard on, nothing missed (2732.082784ms)
+  missed with guard off: 2
+✔ guard OFF through the deployed stack: the same jump loses disputes by default (2988.230903ms)
+   401 {"error":"webhook rejected: PayPal verification_status FAILURE"}
+✔ FORGED PayPal webhook is rejected with 401 by the deployed Lambda (verified by PayPal) (877.14884ms)
+✔ unsigned webhook without the demo flag is rejected (591.838916ms)
+  ack in 780 ms: 202 {"dispute_id":"FX-D-48301","state":"NEW","queued":true}
+  finished after 37 s: state FILED score 85 turns 6 decided_by agent
+  filing: FIXTURE_DRY_RUN /v1/customer/disputes/FX-D-48301/provide-evidence request_id dd-ea09bbf0f6fa2457acde80cba145f5c9c510bb535ba52281
+✔ REAL AGENT, deployed: webhook returns 202 at once, then the Bedrock tool-using agent finishes the dispute (38343.436234ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 63755.106978

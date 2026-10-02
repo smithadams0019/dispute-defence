@@ -1,0 +1,24 @@
+{
+  "name": "dispute-defence-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/unit.*.test.js tests/lambda.local.test.js",
+    "test:unit": "node --test tests/unit.*.test.js",
+    "test:live": "node --test tests/live.*.test.js",
+    "test:deployed": "node --test tests/deployed.test.js",
+    "precompute": "node scripts/precompute.mjs",
+    "gen:enums": "node scripts/gen-enums.mjs"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1145.0",
+    "@aws-sdk/client-dynamodb": "^3.1145.0",
+    "@aws-sdk/client-lambda": "^3.1145.0",
+    "@aws-sdk/lib-dynamodb": "^3.1145.0"
+  }
+}

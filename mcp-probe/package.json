@@ -1,0 +1,1 @@
+{"name":"mcp-probe","private":true,"type":"module","license":"MIT","scripts":{"probe":"node probe.mjs"},"dependencies":{"@modelcontextprotocol/sdk":"^1.31.0","@paypal/mcp":"^1.8.1"}}

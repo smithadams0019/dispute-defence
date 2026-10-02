@@ -1,0 +1,26 @@
+MCP server connected. tools/list returned 28 tools via the CLI (--tools=all).
+
+Dispute tools (3):
+  - list_disputes: 
+    input: ["disputed_transaction_id","dispute_state","page_size","page"]  required: []
+  - get_dispute: 
+    input: ["dispute_id"]  required: ["dispute_id"]
+  - accept_dispute_claim: 
+    input: ["dispute_id","note"]  required: ["dispute_id","note"]
+
+Of those, WRITE tools: accept_dispute_claim
+Any tool anywhere mentioning evidence/appeal/escalate/offer: []
+
+--- one live read through the MCP server (list first; no calls on ids that are not ours)
+list_disputes -> ["{\"items\":[],\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/customer/disputes\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/customer/disputes\",\"rel\":\"first\",\"method\":\"GET\"}]}"]
+get_dispute / accept_dispute_claim were NOT called: the sandbox account has no disputes, and accept_dispute_claim refunds the buyer.
+
+All tool names: create_invoice, list_invoices, get_invoice, send_invoice, send_invoice_reminder, cancel_sent_invoice, generate_invoice_qr_code, create_product, list_products, update_product, show_product_details, create_subscription_plan, list_subscription_plans, show_subscription_plan_details, create_subscription, show_subscription_details, cancel_subscription, create_shipment_tracking, get_shipment_tracking, create_order, get_order, pay_order, list_disputes, get_dispute, accept_dispute_claim, list_transactions, create_refund, get_refund
+
+--- remote MCP endpoint probe (2026-10-02T02:07:13Z)
+mcp.sandbox.paypal.com/http -> 404
+mcp.sandbox.paypal.com/mcp -> 401
+mcp.sandbox.paypal.com/.well-known/oauth-authorization-server -> 200
+mcp.paypal.com/http -> 404
+mcp.paypal.com/mcp -> 401
+mcp.paypal.com/.well-known/oauth-authorization-server -> 200
